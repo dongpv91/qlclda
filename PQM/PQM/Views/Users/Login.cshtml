@@ -1,0 +1,34 @@
+﻿@model PQM.Models.Users
+@{
+    ViewBag.Title = "Login";
+    ViewBag.ReturnUrl = Request["ReturnUrl"];
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm(null, null, new { returnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <h4>Đăng nhập:</h4>
+    <hr />
+    <p>
+        <div class="input-group">
+            <span class="input-group-addon">Username</span>
+            @Html.TextBoxFor(m => m.UserName, new { @class="form-control", placeholder = "Nhập ID" })
+        </div>
+    </p>
+
+    <p>
+        <div class="input-group">
+            <span class="input-group-addon">Password</span>
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Nhập mật khẩu" })
+        </div>
+    </p>
+    
+    <p class="text-warning">
+        @Html.CheckBoxFor(m => m.RememberMe)
+        Lưu đăng nhập lần sau!
+    </p>
+    <button type="submit" class="btn">Log On</button>
+}

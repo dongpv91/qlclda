@@ -1,0 +1,147 @@
+﻿@model IEnumerable<PQM.Models.project>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name_project)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.expected_start_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.expected_end_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.actual_start_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.actual_end_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.technology)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.purpose)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estimator)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.scale_estimator)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contract_value)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.brse)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.current_cost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estimated_cost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.software)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hardware)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.customer.company)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.end_project.difficulty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.type_project.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quality.id)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name_project)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.expected_start_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.expected_end_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.actual_start_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.actual_end_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.technology)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.purpose)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estimator)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.scale_estimator)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.contract_value)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.brse)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.current_cost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estimated_cost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.software)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hardware)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.customer.company)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.end_project.difficulty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.type_project.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quality.id)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

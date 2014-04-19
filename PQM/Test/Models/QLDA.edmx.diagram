@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="081657c3a9bf41c684bea6fd8e5f3745" Name="Diagram1">
+        <EntityTypeShape EntityType="project_infoModel.activity_log" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="project_infoModel.customer" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="project_infoModel.end_project" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="project_infoModel.project" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="project_infoModel.quality" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="project_infoModel.staff" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="project_infoModel.team" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="project_infoModel.type_project" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="project_infoModel.user" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="project_infoModel.activity_log_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="project_infoModel.project_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="project_infoModel.end_project_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="project_infoModel.project_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="project_infoModel.quality_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="project_infoModel.team_project" ManuallyRouted="false" />
+        <AssociationConnector Association="project_infoModel.team_staff" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

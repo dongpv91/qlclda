@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="project_infoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="activity_log">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_project" Type="Int64" Nullable="false" />
+    <Property Name="who_activity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="date_update" Type="DateTime" Nullable="false" />
+    <Property Name="content_update" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="project" Relationship="Self.activity_log_ibfk_1" FromRole="activity_log" ToRole="project" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="company" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="representative" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email_of_representative" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="skype_of_representative" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="phone_number_of_representative" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="projects" Relationship="Self.project_ibfk_1" FromRole="customer" ToRole="project" />
+  </EntityType>
+  <EntityType Name="end_project">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="difficulty" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="advantage" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="risk" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="experience" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="is_fail" Type="Int32" />
+    <NavigationProperty Name="project" Relationship="Self.end_project_ibfk_1" FromRole="end_project" ToRole="project" />
+  </EntityType>
+  <EntityType Name="project">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_customer" Type="Int64" Nullable="false" />
+    <Property Name="id_type_project" Type="Int64" Nullable="false" />
+    <Property Name="name_project" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="expected_start_date" Type="DateTime" Nullable="false" />
+    <Property Name="expected_end_date" Type="DateTime" Nullable="false" />
+    <Property Name="actual_start_date" Type="DateTime" />
+    <Property Name="actual_end_date" Type="DateTime" />
+    <Property Name="technology" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="purpose" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="estimator" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="scale_estimator" Type="Int32" />
+    <Property Name="contract_value" Type="Int32" />
+    <Property Name="pm" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="brse" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="current_cost" Type="Int32" />
+    <Property Name="estimated_cost" Type="Int32" />
+    <Property Name="software" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="hardware" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="activity_log" Relationship="Self.activity_log_ibfk_1" FromRole="project" ToRole="activity_log" />
+    <NavigationProperty Name="customer" Relationship="Self.project_ibfk_1" FromRole="project" ToRole="customer" />
+    <NavigationProperty Name="end_project" Relationship="Self.end_project_ibfk_1" FromRole="project" ToRole="end_project" />
+    <NavigationProperty Name="type_project" Relationship="Self.project_ibfk_2" FromRole="project" ToRole="type_project" />
+    <NavigationProperty Name="quality" Relationship="Self.quality_ibfk_1" FromRole="project" ToRole="quality" />
+    <NavigationProperty Name="teams" Relationship="Self.team_project" FromRole="project" ToRole="team" />
+  </EntityType>
+  <EntityType Name="quality">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="number_kloc" Type="Int32" />
+    <Property Name="number_bug_of_team" Type="Int32" />
+    <Property Name="number_bug_of_team_in_kloc" Type="Int32" />
+    <Property Name="number_bug_of_customer" Type="Int32" />
+    <Property Name="number_bug_of_customer_int_kloc" Type="Int32" />
+    <Property Name="number_test_case" Type="Int32" />
+    <Property Name="human_resource" Type="Int32" />
+    <Property Name="time_complete" Type="Int32" />
+    <NavigationProperty Name="project" Relationship="Self.quality_ibfk_1" FromRole="quality" ToRole="project" />
+  </EntityType>
+  <EntityType Name="staff">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="role" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="skype" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="phone_number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="teams" Relationship="Self.team_staff" FromRole="staff" ToRole="team" />
+  </EntityType>
+  <EntityType Name="team">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="workplace" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="technique" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="projects" Relationship="Self.team_project" FromRole="team" ToRole="project" />
+    <NavigationProperty Name="staffs" Relationship="Self.team_staff" FromRole="team" ToRole="staff" />
+  </EntityType>
+  <EntityType Name="type_project">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="country" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="projects" Relationship="Self.project_ibfk_2" FromRole="type_project" ToRole="project" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="activity_log_ibfk_1">
+    <End Role="project" Type="Self.project" Multiplicity="1" />
+    <End Role="activity_log" Type="Self.activity_log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="project">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="activity_log">
+        <PropertyRef Name="id_project" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="project_ibfk_1">
+    <End Role="customer" Type="Self.customer" Multiplicity="1" />
+    <End Role="project" Type="Self.project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="project">
+        <PropertyRef Name="id_customer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="end_project_ibfk_1">
+    <End Role="project" Type="Self.project" Multiplicity="1" />
+    <End Role="end_project" Type="Self.end_project" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="project">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="end_project">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="project_ibfk_2">
+    <End Role="type_project" Type="Self.type_project" Multiplicity="1" />
+    <End Role="project" Type="Self.project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="type_project">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="project">
+        <PropertyRef Name="id_type_project" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="quality_ibfk_1">
+    <End Role="project" Type="Self.project" Multiplicity="1" />
+    <End Role="quality" Type="Self.quality" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="project">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="quality">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="team_project">
+    <End Role="team" Type="Self.team" Multiplicity="*" />
+    <End Role="project" Type="Self.project" Multiplicity="*" />
+  </Association>
+  <Association Name="team_staff">
+    <End Role="team" Type="Self.team" Multiplicity="*" />
+    <End Role="staff" Type="Self.staff" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="project_infoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="activity_log" EntityType="Self.activity_log" />
+    <EntitySet Name="customers" EntityType="Self.customer" />
+    <EntitySet Name="end_project" EntityType="Self.end_project" />
+    <EntitySet Name="projects" EntityType="Self.project" />
+    <EntitySet Name="qualities" EntityType="Self.quality" />
+    <EntitySet Name="staffs" EntityType="Self.staff" />
+    <EntitySet Name="teams" EntityType="Self.team" />
+    <EntitySet Name="type_project" EntityType="Self.type_project" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <AssociationSet Name="activity_log_ibfk_1" Association="Self.activity_log_ibfk_1">
+      <End Role="project" EntitySet="projects" />
+      <End Role="activity_log" EntitySet="activity_log" />
+    </AssociationSet>
+    <AssociationSet Name="project_ibfk_1" Association="Self.project_ibfk_1">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="project" EntitySet="projects" />
+    </AssociationSet>
+    <AssociationSet Name="end_project_ibfk_1" Association="Self.end_project_ibfk_1">
+      <End Role="project" EntitySet="projects" />
+      <End Role="end_project" EntitySet="end_project" />
+    </AssociationSet>
+    <AssociationSet Name="project_ibfk_2" Association="Self.project_ibfk_2">
+      <End Role="type_project" EntitySet="type_project" />
+      <End Role="project" EntitySet="projects" />
+    </AssociationSet>
+    <AssociationSet Name="quality_ibfk_1" Association="Self.quality_ibfk_1">
+      <End Role="project" EntitySet="projects" />
+      <End Role="quality" EntitySet="qualities" />
+    </AssociationSet>
+    <AssociationSet Name="team_project" Association="Self.team_project">
+      <End Role="team" EntitySet="teams" />
+      <End Role="project" EntitySet="projects" />
+    </AssociationSet>
+    <AssociationSet Name="team_staff" Association="Self.team_staff">
+      <End Role="team" EntitySet="teams" />
+      <End Role="staff" EntitySet="staffs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

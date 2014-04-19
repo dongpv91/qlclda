@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="project_infoModelStoreContainer" CdmEntityContainer="project_infoEntities">
+    <EntitySetMapping Name="activity_log">
+      <EntityTypeMapping TypeName="project_infoModel.activity_log">
+        <MappingFragment StoreEntitySet="activity_log">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_project" ColumnName="id_project" />
+          <ScalarProperty Name="who_activity" ColumnName="who_activity" />
+          <ScalarProperty Name="date_update" ColumnName="date_update" />
+          <ScalarProperty Name="content_update" ColumnName="content_update" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customers">
+      <EntityTypeMapping TypeName="project_infoModel.customer">
+        <MappingFragment StoreEntitySet="customer">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="company" ColumnName="company" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="representative" ColumnName="representative" />
+          <ScalarProperty Name="email_of_representative" ColumnName="email_of_representative" />
+          <ScalarProperty Name="skype_of_representative" ColumnName="skype_of_representative" />
+          <ScalarProperty Name="phone_number_of_representative" ColumnName="phone_number_of_representative" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="end_project">
+      <EntityTypeMapping TypeName="project_infoModel.end_project">
+        <MappingFragment StoreEntitySet="end_project">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="difficulty" ColumnName="difficulty" />
+          <ScalarProperty Name="advantage" ColumnName="advantage" />
+          <ScalarProperty Name="risk" ColumnName="risk" />
+          <ScalarProperty Name="experience" ColumnName="experience" />
+          <ScalarProperty Name="is_fail" ColumnName="is_fail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="projects">
+      <EntityTypeMapping TypeName="project_infoModel.project">
+        <MappingFragment StoreEntitySet="project">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_customer" ColumnName="id_customer" />
+          <ScalarProperty Name="id_type_project" ColumnName="id_type_project" />
+          <ScalarProperty Name="name_project" ColumnName="name_project" />
+          <ScalarProperty Name="expected_start_date" ColumnName="expected_start_date" />
+          <ScalarProperty Name="expected_end_date" ColumnName="expected_end_date" />
+          <ScalarProperty Name="actual_start_date" ColumnName="actual_start_date" />
+          <ScalarProperty Name="actual_end_date" ColumnName="actual_end_date" />
+          <ScalarProperty Name="technology" ColumnName="technology" />
+          <ScalarProperty Name="purpose" ColumnName="purpose" />
+          <ScalarProperty Name="estimator" ColumnName="estimator" />
+          <ScalarProperty Name="scale_estimator" ColumnName="scale_estimator" />
+          <ScalarProperty Name="contract_value" ColumnName="contract_value" />
+          <ScalarProperty Name="pm" ColumnName="pm" />
+          <ScalarProperty Name="brse" ColumnName="brse" />
+          <ScalarProperty Name="current_cost" ColumnName="current_cost" />
+          <ScalarProperty Name="estimated_cost" ColumnName="estimated_cost" />
+          <ScalarProperty Name="software" ColumnName="software" />
+          <ScalarProperty Name="hardware" ColumnName="hardware" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="qualities">
+      <EntityTypeMapping TypeName="project_infoModel.quality">
+        <MappingFragment StoreEntitySet="quality">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="number_kloc" ColumnName="number_kloc" />
+          <ScalarProperty Name="number_bug_of_team" ColumnName="number_bug_of_team" />
+          <ScalarProperty Name="number_bug_of_team_in_kloc" ColumnName="number_bug_of_team_in_kloc" />
+          <ScalarProperty Name="number_bug_of_customer" ColumnName="number_bug_of_customer" />
+          <ScalarProperty Name="number_bug_of_customer_int_kloc" ColumnName="number_bug_of_customer_int_kloc" />
+          <ScalarProperty Name="number_test_case" ColumnName="number_test_case" />
+          <ScalarProperty Name="human_resource" ColumnName="human_resource" />
+          <ScalarProperty Name="time_complete" ColumnName="time_complete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="staffs">
+      <EntityTypeMapping TypeName="project_infoModel.staff">
+        <MappingFragment StoreEntitySet="staff">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="skype" ColumnName="skype" />
+          <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="teams">
+      <EntityTypeMapping TypeName="project_infoModel.team">
+        <MappingFragment StoreEntitySet="team">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="workplace" ColumnName="workplace" />
+          <ScalarProperty Name="technique" ColumnName="technique" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="type_project">
+      <EntityTypeMapping TypeName="project_infoModel.type_project">
+        <MappingFragment StoreEntitySet="type_project">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="country" ColumnName="country" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="project_infoModel.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="team_project" TypeName="project_infoModel.team_project" StoreEntitySet="team_project">
+      <EndProperty Name="team">
+        <ScalarProperty Name="id" ColumnName="id_team" />
+      </EndProperty>
+      <EndProperty Name="project">
+        <ScalarProperty Name="id" ColumnName="id_project" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="team_staff" TypeName="project_infoModel.team_staff" StoreEntitySet="team_staff">
+      <EndProperty Name="team">
+        <ScalarProperty Name="id" ColumnName="id_team" />
+      </EndProperty>
+      <EndProperty Name="staff">
+        <ScalarProperty Name="id" ColumnName="id_staff" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

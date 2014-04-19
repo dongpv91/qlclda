@@ -1,0 +1,184 @@
+﻿@model PQM.Models.project
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>project</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name_project)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name_project)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.expected_start_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.expected_start_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.expected_end_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.expected_end_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.actual_start_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.actual_start_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.actual_end_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.actual_end_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.technology)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.technology)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.purpose)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.purpose)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estimator)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estimator)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.scale_estimator)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.scale_estimator)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contract_value)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contract_value)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.brse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.brse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.current_cost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.current_cost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estimated_cost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estimated_cost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.software)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.software)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hardware)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hardware)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.customer.company)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.customer.company)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.end_project.difficulty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.end_project.difficulty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.type_project.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.type_project.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quality.id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quality.id)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

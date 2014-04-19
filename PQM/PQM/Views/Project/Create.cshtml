@@ -1,0 +1,215 @@
+﻿@model PQM.Models.project
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Dự án</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="row">
+            
+            @* Cột trái *@
+            <div class="col-xs-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.id_customer, "Khách hàng", new { @class = "control-label col-md-3" })
+                    <div class="col-sm-1">
+                        @Html.DropDownList("id_customer", "Chọn khách hàng")
+                        @Html.ValidationMessageFor(model => model.id_customer)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.id_type_project, "Loại dự án", new { @class = "control-label col-md-3" })
+                    <div class="col-md-1">
+                        @Html.DropDownList("id_type_project", "Chọn loại dự án")
+                        @Html.ValidationMessageFor(model => model.id_type_project)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.name_project, new { @class = "control-label col-md-3" })
+                    <div class="col-md-1">
+                        @Html.EditorFor(model => model.name_project)
+                        @Html.ValidationMessageFor(model => model.name_project)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.expected_start_date, new { @class = "control-label col-md-3" })
+                    <div class="col-md-1">
+                        @Html.EditorFor(model => model.expected_start_date)
+                        @Html.ValidationMessageFor(model => model.expected_start_date)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.expected_end_date, new { @class = "control-label col-md-3" })
+                    <div class="col-md-1">
+                        @Html.EditorFor(model => model.expected_end_date)
+                        @Html.ValidationMessageFor(model => model.expected_end_date)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.actual_start_date, new { @class = "control-label col-md-3" })
+                    <div class="col-md-1">
+                        @Html.EditorFor(model => model.actual_start_date)
+                        @Html.ValidationMessageFor(model => model.actual_start_date)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.actual_end_date, new { @class = "control-label col-md-3" })
+                    <div class="col-md-1">
+                        @Html.EditorFor(model => model.actual_end_date)
+                        @Html.ValidationMessageFor(model => model.actual_end_date)
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    @Html.LabelFor(model => model.technology, new { @class = "control-label col-md-3" })
+                    <div class="col-md-1">
+                        @Html.EditorFor(model => model.technology)
+                        @Html.ValidationMessageFor(model => model.technology)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.purpose, new { @class = "control-label col-md-3" })
+                    <div class="col-md-1">
+                        @Html.EditorFor(model => model.purpose)
+                        @Html.ValidationMessageFor(model => model.purpose)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.estimator, new { @class = "control-label col-md-3" })
+                    <div class="col-md-1">
+                        @Html.EditorFor(model => model.estimator)
+                        @Html.ValidationMessageFor(model => model.estimator)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.scale_estimator, new { @class = "control-label col-md-3" })
+                    <div class="col-md-1">
+                        @Html.EditorFor(model => model.scale_estimator)
+                        @Html.ValidationMessageFor(model => model.scale_estimator)
+                    </div>
+                </div>
+            </div>
+
+            @* Cột phải --------------------------------------------------------------------------------------------*@
+            <div class="col-xs-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.contract_value, new { @class = "control-label col-md-3" })
+                    <div class="col-md-1">
+                        @Html.EditorFor(model => model.contract_value)
+                        @Html.ValidationMessageFor(model => model.contract_value)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.pm, new { @class = "control-label col-md-3" })
+                    <div class="col-md-1">
+                        @Html.EditorFor(model => model.pm)
+                        @Html.ValidationMessageFor(model => model.pm)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.brse, new { @class = "control-label col-md-3" })
+                    <div class="col-md-1">
+                        @Html.EditorFor(model => model.brse)
+                        @Html.ValidationMessageFor(model => model.brse)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.current_cost, new { @class = "control-label col-md-3" })
+                    <div class="col-md-1">
+                        @Html.EditorFor(model => model.current_cost)
+                        @Html.ValidationMessageFor(model => model.current_cost)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.estimated_cost, new { @class = "control-label col-md-3" })
+                    <div class="col-md-1">
+                        @Html.EditorFor(model => model.estimated_cost)
+                        @Html.ValidationMessageFor(model => model.estimated_cost)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.software, new { @class = "control-label col-md-3" })
+                    <div class="col-md-1">
+                        @Html.EditorFor(model => model.software)
+                        @Html.ValidationMessageFor(model => model.software)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.hardware, new { @class = "control-label col-md-3" })
+                    <div class="col-md-1">
+                        @Html.EditorFor(model => model.hardware)
+                        @Html.ValidationMessageFor(model => model.hardware)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <p>Nhóm đảm trách:</p>
+                    <div class="col-md-offset-2 col-md-10">
+                        <table>
+                            <tr>
+                                @{
+                                    int cnt = 0;
+                                    List<PQM.ViewModels.AssignedTeamData> teams = ViewBag.Teams;
+
+                                    foreach (var team in teams)
+                                    {
+                                        if (cnt++ % 3 == 0)
+                                        {
+                                            @:</tr><tr>
+                                        }
+                                        @:<td class="col-md-1">
+                                                <input type="checkbox"
+                                                       name="selectedTeams"
+                                                       value="@team.TeamID"
+                                                       @(Html.Raw(team.Assigned ? "checked=\"checked\"" : "")) />
+                                                @team.Name
+                                        @:</td>
+                                    }
+                                    @:</tr>
+                                }
+                            </table>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-1">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

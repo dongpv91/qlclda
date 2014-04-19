@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="project_infoModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="activity_log">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_project" Type="uint" Nullable="false" />
+    <Property Name="who_activity" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="date_update" Type="date" Nullable="false" />
+    <Property Name="content_update" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="company" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="address" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="representative" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="email_of_representative" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="skype_of_representative" Type="varchar" MaxLength="100" />
+    <Property Name="phone_number_of_representative" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="end_project">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uint" Nullable="false" />
+    <Property Name="difficulty" Type="text" />
+    <Property Name="advantage" Type="text" />
+    <Property Name="risk" Type="text" />
+    <Property Name="experience" Type="text" />
+    <Property Name="is_fail" Type="int" />
+  </EntityType>
+  <EntityType Name="project">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_customer" Type="uint" Nullable="false" />
+    <Property Name="id_type_project" Type="uint" Nullable="false" />
+    <Property Name="name_project" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="expected_start_date" Type="date" Nullable="false" />
+    <Property Name="expected_end_date" Type="date" Nullable="false" />
+    <Property Name="actual_start_date" Type="date" />
+    <Property Name="actual_end_date" Type="date" />
+    <Property Name="technology" Type="text" />
+    <Property Name="purpose" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="estimator" Type="varchar" MaxLength="100" />
+    <Property Name="scale_estimator" Type="int" />
+    <Property Name="contract_value" Type="int" />
+    <Property Name="pm" Type="varchar" MaxLength="100" />
+    <Property Name="brse" Type="varchar" MaxLength="100" />
+    <Property Name="current_cost" Type="int" />
+    <Property Name="estimated_cost" Type="int" />
+    <Property Name="software" Type="varchar" MaxLength="200" />
+    <Property Name="hardware" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="quality">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uint" Nullable="false" />
+    <Property Name="number_kloc" Type="int" />
+    <Property Name="number_bug_of_team" Type="int" />
+    <Property Name="number_bug_of_team_in_kloc" Type="int" />
+    <Property Name="number_bug_of_customer" Type="int" />
+    <Property Name="number_bug_of_customer_int_kloc" Type="int" />
+    <Property Name="number_test_case" Type="int" />
+    <Property Name="human_resource" Type="int" />
+    <Property Name="time_complete" Type="int" />
+  </EntityType>
+  <EntityType Name="staff">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="role" Type="varchar" MaxLength="100" />
+    <Property Name="skype" Type="varchar" MaxLength="100" />
+    <Property Name="phone_number" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="team">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="workplace" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="technique" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="team_project">
+    <Key>
+      <PropertyRef Name="id_team" />
+      <PropertyRef Name="id_project" />
+    </Key>
+    <Property Name="id_team" Type="uint" Nullable="false" />
+    <Property Name="id_project" Type="uint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="team_staff">
+    <Key>
+      <PropertyRef Name="id_team" />
+      <PropertyRef Name="id_staff" />
+    </Key>
+    <Property Name="id_team" Type="uint" Nullable="false" />
+    <Property Name="id_staff" Type="uint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="type_project">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="country" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="activity_log_ibfk_1">
+    <End Role="project" Type="Self.project" Multiplicity="1" />
+    <End Role="activity_log" Type="Self.activity_log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="project">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="activity_log">
+        <PropertyRef Name="id_project" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="end_project_ibfk_1">
+    <End Role="project" Type="Self.project" Multiplicity="1" />
+    <End Role="end_project" Type="Self.end_project" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="project">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="end_project">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="project_ibfk_1">
+    <End Role="customer" Type="Self.customer" Multiplicity="1" />
+    <End Role="project" Type="Self.project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="project">
+        <PropertyRef Name="id_customer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="project_ibfk_2">
+    <End Role="type_project" Type="Self.type_project" Multiplicity="1" />
+    <End Role="project" Type="Self.project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="type_project">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="project">
+        <PropertyRef Name="id_type_project" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="quality_ibfk_1">
+    <End Role="project" Type="Self.project" Multiplicity="1" />
+    <End Role="quality" Type="Self.quality" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="project">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="quality">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="team_project_ibfk_1">
+    <End Role="team" Type="Self.team" Multiplicity="1" />
+    <End Role="team_project" Type="Self.team_project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="team">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="team_project">
+        <PropertyRef Name="id_team" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="team_project_ibfk_2">
+    <End Role="project" Type="Self.project" Multiplicity="1" />
+    <End Role="team_project" Type="Self.team_project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="project">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="team_project">
+        <PropertyRef Name="id_project" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="team_staff_ibfk_1">
+    <End Role="team" Type="Self.team" Multiplicity="1" />
+    <End Role="team_staff" Type="Self.team_staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="team">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="team_staff">
+        <PropertyRef Name="id_team" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="team_staff_ibfk_2">
+    <End Role="staff" Type="Self.staff" Multiplicity="1" />
+    <End Role="team_staff" Type="Self.team_staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="staff">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="team_staff">
+        <PropertyRef Name="id_staff" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="project_infoModelStoreContainer">
+    <EntitySet Name="activity_log" EntityType="Self.activity_log" Schema="project_info" store:Type="Tables" />
+    <EntitySet Name="customer" EntityType="Self.customer" Schema="project_info" store:Type="Tables" />
+    <EntitySet Name="end_project" EntityType="Self.end_project" Schema="project_info" store:Type="Tables" />
+    <EntitySet Name="project" EntityType="Self.project" Schema="project_info" store:Type="Tables" />
+    <EntitySet Name="quality" EntityType="Self.quality" Schema="project_info" store:Type="Tables" />
+    <EntitySet Name="staff" EntityType="Self.staff" Schema="project_info" store:Type="Tables" />
+    <EntitySet Name="team" EntityType="Self.team" Schema="project_info" store:Type="Tables" />
+    <EntitySet Name="team_project" EntityType="Self.team_project" Schema="project_info" store:Type="Tables" />
+    <EntitySet Name="team_staff" EntityType="Self.team_staff" Schema="project_info" store:Type="Tables" />
+    <EntitySet Name="type_project" EntityType="Self.type_project" Schema="project_info" store:Type="Tables" />
+    <EntitySet Name="user" EntityType="Self.user" Schema="project_info" store:Type="Tables" />
+    <AssociationSet Name="activity_log_ibfk_1" Association="Self.activity_log_ibfk_1">
+      <End Role="project" EntitySet="project" />
+      <End Role="activity_log" EntitySet="activity_log" />
+    </AssociationSet>
+    <AssociationSet Name="end_project_ibfk_1" Association="Self.end_project_ibfk_1">
+      <End Role="project" EntitySet="project" />
+      <End Role="end_project" EntitySet="end_project" />
+    </AssociationSet>
+    <AssociationSet Name="project_ibfk_1" Association="Self.project_ibfk_1">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="project" EntitySet="project" />
+    </AssociationSet>
+    <AssociationSet Name="project_ibfk_2" Association="Self.project_ibfk_2">
+      <End Role="type_project" EntitySet="type_project" />
+      <End Role="project" EntitySet="project" />
+    </AssociationSet>
+    <AssociationSet Name="quality_ibfk_1" Association="Self.quality_ibfk_1">
+      <End Role="project" EntitySet="project" />
+      <End Role="quality" EntitySet="quality" />
+    </AssociationSet>
+    <AssociationSet Name="team_project_ibfk_1" Association="Self.team_project_ibfk_1">
+      <End Role="team" EntitySet="team" />
+      <End Role="team_project" EntitySet="team_project" />
+    </AssociationSet>
+    <AssociationSet Name="team_project_ibfk_2" Association="Self.team_project_ibfk_2">
+      <End Role="project" EntitySet="project" />
+      <End Role="team_project" EntitySet="team_project" />
+    </AssociationSet>
+    <AssociationSet Name="team_staff_ibfk_1" Association="Self.team_staff_ibfk_1">
+      <End Role="team" EntitySet="team" />
+      <End Role="team_staff" EntitySet="team_staff" />
+    </AssociationSet>
+    <AssociationSet Name="team_staff_ibfk_2" Association="Self.team_staff_ibfk_2">
+      <End Role="staff" EntitySet="staff" />
+      <End Role="team_staff" EntitySet="team_staff" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

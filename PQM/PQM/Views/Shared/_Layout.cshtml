@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - PQM</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("PQM", "Index", "Home", null, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+
+                @* Navigation bar *@
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Dự án","Index","Project")</li>
+                    <li>@Html.ActionLink("Khách hàng", "Index", "Customer")</li>
+                    <li>@Html.ActionLink("Nhóm", "Index", "Team")</li>
+                    <li>@Html.ActionLink("Loại dự án", "Index", "Type")</li>
+                </ul>
+
+                @* Đăng nhập + Đăng xuất *@
+                <ul style="float:right" class="nav navbar-nav">
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Đăng nhập", "Logout", "Users")</li>
+                    }
+                    else
+                    {
+                        @*<li><a href="#">Hi! @User.Identity.Name</a></li>*@
+                        <li>@Html.ActionLink("Hi! "+User.Identity.Name,"ChangePassword", "Users")</li>
+                        <li>@Html.ActionLink("Đăng xuất", "Logout", "Users")</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Project Quality Manager</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
